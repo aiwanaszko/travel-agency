@@ -11,6 +11,7 @@ import CountriesContainer from './components/views/Countries/CountriesContainer'
 import RegionsContainer from './components/views/Regions/RegionsContainer';
 import Info from './components/views/Info/Info';
 import Trip from './components/views/Trip/Trip';
+import Country from './components/views/Country/Country';
 import NotFound from './components/views/NotFound/NotFound';
 
 import parseTrips from './utils/parseTrips';
@@ -46,6 +47,7 @@ class App extends React.Component {
             <Route exact path='/regions' component={RegionsContainer} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
+            <Route path='/country/:countryCode' component={Country} />
             <Route path='/trip/:id' component={Trip} />
           </Switch>
         </MainLayout>
