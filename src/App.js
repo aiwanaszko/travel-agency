@@ -7,9 +7,10 @@ import MainLayout from './components/layout/MainLayout/MainLayout';
 
 import Home from './components/views/Home/Home';
 import Trips from './components/views/Trips/TripsContainer';
-import Countries from './components/views/Countries/Countries';
-import Regions from './components/views/Regions/Regions';
+import CountriesContainer from './components/views/Countries/CountriesContainer';
+import RegionsContainer from './components/views/Regions/RegionsContainer';
 import Info from './components/views/Info/Info';
+import Trip from './components/views/Trip/Trip';
 import NotFound from './components/views/NotFound/NotFound';
 
 import parseTrips from './utils/parseTrips';
@@ -41,10 +42,11 @@ class App extends React.Component {
           <Switch location={location}>
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
-            <Route exact path='/countries' component={Countries} />
-            <Route exact path='/regions' component={Regions} />
+            <Route exact path='/countries' component={CountriesContainer} />
+            <Route exact path='/regions' component={RegionsContainer} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
+            <Route path='/trip/:id' component={Trip} />
           </Switch>
         </MainLayout>
       </BrowserRouter>
