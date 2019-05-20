@@ -13,7 +13,7 @@ import TripSummary from '../../features/TripSummary/TripSummary';
 
 import {Grid, Row, Col} from 'react-flexbox-grid';
 
-const Country = ({name, capital, region, subregion, currencies, population, trips}) => (
+const Country = ({name, capital, region, subregion, currencies, population, trips, match}) => (
   <Section variant='has-hero'>
     <Hero variant='small' titleText={`${name}`} imageSrc={`https://loremflickr.com/1000/600/${name},landscape/all`} />
     <Grid>

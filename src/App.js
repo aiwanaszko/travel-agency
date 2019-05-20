@@ -43,12 +43,12 @@ class App extends React.Component {
           <Switch location={location}>
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
+            <Route path='/trip/:id' component={Trip} />
             <Route exact path='/countries' component={CountriesContainer} />
+            <Route path='/country/:countryCode' component={Country} />
             <Route exact path='/regions' component={RegionsContainer} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
-            <Route path='/country/:countryCode' component={Country} />
-            <Route path='/trip/:id' component={Trip} />
           </Switch>
         </MainLayout>
       </BrowserRouter>
