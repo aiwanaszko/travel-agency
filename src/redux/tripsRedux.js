@@ -1,3 +1,4 @@
+import arrayContainsArray from '../utils/arrayContainsArray';
 /* SELECTORS */
 
 export const getAllTrips = ({trips}) => trips;
@@ -13,7 +14,15 @@ export const getFilteredTrips = ({trips, filters}) => {
 
   // TODO - filter by duration
 
+  output = output.filter(trip => (trip.days >= filters.duration.from && trip.days <= filters.duration.to));
+
   // TODO - filter by tags
+
+  console.log(output, filters);
+
+  if (filters.tags.length) {
+    output = output.filter(trip => arrayContainsArray(trip.tags, filters.tags));
+  }
 
   // TODO - sort by cost descending (most expensive goes first)
 

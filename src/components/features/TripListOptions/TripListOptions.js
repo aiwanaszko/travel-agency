@@ -8,16 +8,16 @@ class TripListOptions extends React.Component {
   handleTags(tag, checked){
     if(checked) {
       console.log('Adding tag', tag);
-      this.props.addTag(checked);
+      this.props.addTag(tag, checked);
     } else {
       console.log('Removing tag', tag);
-      this.props.removeTag(checked);
+      this.props.removeTag(tag, checked);
     }
   }
 
   handleDuration(type, value){
     console.log('Changing duration', type, value);
-    this.props.changeDuration(type, value);
+    this.props.changeDuration({[type]: value});
   }
 
   handleSearch(phrase){
