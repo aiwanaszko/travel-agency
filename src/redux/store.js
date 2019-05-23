@@ -9,6 +9,11 @@ import orderReducer from './orderRedux';
 const initialState = {
   trips: tripList,
   countries: {},
+  order: {
+    trip: null,
+    email: '',
+    options: {},
+  },
   regions: {},
   subregions: {},
   tags: {},
@@ -19,11 +24,6 @@ const initialState = {
       from: 1,
       to: 14,
     },
-  },
-  order: {
-    trip: null,
-    email: '',
-    options: {},
   },
 };
 
