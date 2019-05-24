@@ -10,4 +10,9 @@ const OrderSummary = props => (
   </h2>
 );
 
+OrderSummary.propTypes = {
+  tripCost: PropTypes.node,
+  options: PropTypes.string,
+};
+
 export default OrderSummary;
