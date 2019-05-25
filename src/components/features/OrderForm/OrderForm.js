@@ -9,8 +9,8 @@ import pricing from '../../../data/pricing';
 const OrderForm = props => (
   <Row>
     {pricing.map(pricingData => (
-      <Col md={4} key={pricing.id}>
-      <OrderOption currentValue={props.options.id} setOrderOption={props.setOrderOption} {...pricingData} />
+      <Col md={4} key={pricingData.id}>
+      <OrderOption currentValue={props.options[pricingData.id]} setOrderOption={props.setOrderOption} {...pricingData} />
       </Col>
     ))}
     <Col xs={12}>
