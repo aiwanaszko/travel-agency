@@ -67,8 +67,14 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
           </Row>
         </Grid>
       </DetailsBox>
+      <Grid>
+        <Row>
+          <Col md={12}>
       <PageTitle text='Trip options' />
       <OrderForm tripCost={cost} />
+      </Col>
+    </Row>
+  </Grid>
     </Section>
   );
 };
