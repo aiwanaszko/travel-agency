@@ -73,11 +73,10 @@ describe('Component TripSummary', () => {
     });
 
     it('should render tags div if tags is truthy', () => {
-       const expectedTags = 'xxx';
-       const component = shallow(<TripSummary tags={expectedTags}/>);
+       const component = shallow(<TripSummary tags='xxx' />);
 
-       const renderedTags = component.find('.tags').text();
-       expect(renderedTags).toEqual(expectedTags);
+       const renderedTags = component.find('.tags');
+       expect(renderedTags).toBeTruthy();
      });
 
  });
