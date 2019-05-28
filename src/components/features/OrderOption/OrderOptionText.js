@@ -4,7 +4,7 @@ import styles from './OrderOption.scss';
 
 const OrderOptionText = props => (
   <div>
-    <input type='text' />
+    <input className={styles.input} type='text' />
   </div>
 );
 
