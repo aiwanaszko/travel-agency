@@ -5,7 +5,7 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it('should render correct link', () => {
      const expectedLink = 'abc';
-     const component = shallow(<Link to={`/trip/${expectedLink}`}/>);
+     const component = shallow(<TripSummary to={`/trip/${expectedLink}`}/>);
 
      const renderedLink = component.find('.link').text();
      expect(renderedLink).toEqual(expectedLink);
@@ -13,7 +13,6 @@ describe('Component TripSummary', () => {
 
     it('should render correct alt for image', () => {
       const expectedAlt = 'imageAlt';
-
       const component = shallow(<TripSummary src='Lorem ipsum' alt={expectedAlt} />);
 
       expect(component.find('.image').prop('alt')).toEqual(expectedAlt);
