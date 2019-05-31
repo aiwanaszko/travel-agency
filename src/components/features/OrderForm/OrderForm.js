@@ -11,7 +11,7 @@ import {formatPrice} from '../../../utils/formatPrice';
 
 
 const sendOrder = (options, tripCost) => {
-  const totalCost = formatPrice(calculateTotal(tripCost, options));
+  const totalCost = formatPrice(calculateTotal(tripCost, props.options));
 
   const payload = {
     ...options,
@@ -53,7 +53,7 @@ const OrderForm = props => (
 
 OrderForm.propTypes = {
   tripCost: PropTypes.node,
-  options: PropTypes.string,
+  options: PropTypes.object,
 };
 
 export default OrderForm;
