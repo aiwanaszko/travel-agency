@@ -13,9 +13,11 @@ class OrderOptionDate extends React.Component {
   }
 
   handleChange(date) {
+    const {setOptionValue} = this.props;
     this.setState({
-      startDate: date
+      startDate: date,
     });
+    setOptionValue(date);
   }
 
   render() {

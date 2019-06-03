@@ -10,7 +10,7 @@ const initialState = {
   trips: tripList,
   countries: {},
   order: {
-    trip: null,
+    trip: 'xxxxxx',
     email: '',
     options: {},
   },

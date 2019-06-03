@@ -8,14 +8,18 @@ import {Grid, Row, Col} from 'react-flexbox-grid';
 import pricing from '../../../data/pricing';
 import {calculateTotal} from '../../../utils/calculateTotal';
 import {formatPrice} from '../../../utils/formatPrice';
+import settings from '../../../data/settings';
 
 
-const sendOrder = (options, tripCost) => {
-  const totalCost = formatPrice(calculateTotal(tripCost, props.options));
+const sendOrder = (options, tripCost, countryCode, tripId, tripName, currentValue) => {
+  const totalCost = formatPrice(calculateTotal(tripCost, options, countryCode));
 
   const payload = {
     ...options,
     totalCost,
+    countryCode,
+    tripId,
+    tripName,
   };
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -37,23 +41,57 @@ const sendOrder = (options, tripCost) => {
     });
 };
 
-const OrderForm = props => (
-  <Row>
-    {pricing.map(pricingData => (
-      <Col md={4} key={pricingData.id}>
-      <OrderOption currentValue={props.options[pricingData.id]} setOrderOption={props.setOrderOption} {...pricingData} />
-      </Col>
-    ))}
-    <Col xs={12}>
-      <OrderSummary tripCost={props.tripCost} options={props.options} />
-    </Col>
-    <Button onClick={() => sendOrder(options, tripCost)}>Order now!</Button>
-  </Row>
-);
+
+class OrderForm extends React.Component {
+  onSubmit = (event) => {
+    event.preventDefault();
+    const {
+      options,
+      tripCost,
+      countryCode,
+      tripId,
+      tripName,
+      currentValue
+    } = this.props;
+
+    sendOrder(options, tripCost, countryCode, tripId, tripName, currentValue);
+  }
+
+  render() {
+    const {
+      options,
+      tripCost,
+      countryCode,
+      tripId,
+      tripName,
+      setOrderOption,
+      currentValue
+    } = this.props;
+
+    return (
+      <form onSubmit={this.onSubmit}>
+        <Row>
+          {pricing.map(pricingData => (
+            <Col md={4} key={pricingData.id}>
+            <OrderOption currentValue={options[pricingData.id]} setOrderOption={setOrderOption} {...pricingData} />
+            </Col>
+          ))}
+          <Col xs={12}>
+            <OrderSummary tripCost={tripCost} options={options} />
+            {options.currentValue}
+          </Col>
+          <Button>Order now!</Button>
+        </Row>
+      </form>
+    );
+  }
+}
+
 
 OrderForm.propTypes = {
   tripCost: PropTypes.node,
   options: PropTypes.object,
+  tripData: PropTypes.object,
 };
 
 export default OrderForm;
